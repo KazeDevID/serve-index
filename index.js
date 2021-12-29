@@ -99,13 +99,10 @@ function serveIndex(root, options) {
   var view = opts.view || 'tiles';
 
   return function (req, res, next) {
-    /* if (req.method !== 'GET' && req.method !== 'HEAD') {
-      res.statusCode = 'OPTIONS' === req.method ? 200 : 405;
-      res.Header('Allow', 'GET, HEAD, OPTIONS');
-      res.setHeader('Content-Length', '0');
-      res.end();
+     if (req.method !== 'GET' && req.method !== 'HEAD') {
+       next()
       return;
-    }*/
+    }
 
     // get dir
     var dir = getRequestedDir(req)
